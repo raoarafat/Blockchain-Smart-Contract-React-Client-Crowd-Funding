@@ -50,11 +50,9 @@ class RequestIndex extends Component {
         <h3>Requests</h3>
         {this.props.address && (
           <Link route={`/campaigns/${this.props.address}/requests/new`}>
-            <a>
-              <Button primary floated="right" style={{ marginBottom: 10 }}>
-                Add Request
-              </Button>
-            </a>
+            <Button primary floated="right" style={{ marginBottom: 10 }}>
+              Add Request
+            </Button>
           </Link>
         )}
         <Table>

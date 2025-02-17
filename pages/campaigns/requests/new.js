@@ -5,7 +5,7 @@ import { Form } from 'semantic-ui-react';
 import Layout from '../../../components/layout';
 import Campaign from '../../../ethereum/campaign';
 
-class RequestIndex extends Component {
+class RequestNew extends Component {
   state = {
     value: '',
     description: '',
@@ -47,9 +47,7 @@ class RequestIndex extends Component {
   render() {
     return (
       <Layout>
-        <Link route={`/campaigns/${this.props.address}/requests`}>
-          <a>Back</a>
-        </Link>
+        <Link route={`/campaigns/${this.props.address}/requests`}>Back</Link>
 
         <h3>Requests</h3>
         <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
@@ -88,4 +86,4 @@ class RequestIndex extends Component {
   }
 }
 
-export default RequestIndex;
+export default RequestNew;
