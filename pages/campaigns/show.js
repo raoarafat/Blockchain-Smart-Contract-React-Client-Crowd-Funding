@@ -3,17 +3,18 @@ import Layout from '../../components/layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Card, Button } from 'semantic-ui-react';
 import { Link } from '../../routes';
 
 class CampaignShow extends Component {
   static async getInitialProps(props) {
     console.log(props.query.address);
 
-    const campaign = Campaign(props.query.address);
+    const campaign = await Campaign(props.query.address);
+    console.log('campaign: ', campaign);
     const summary = await campaign.methods.getSummary().call();
 
-    console.log(summary);
+    console.log('summary show: ', summary);
 
     return {
       address: props.query.address,
@@ -82,9 +83,7 @@ class CampaignShow extends Component {
             <Grid.Row>
               <Grid.Column>
                 <Link route={`/campaigns/${this.props.address}/requests`}>
-                  <a>
-                    <Button primary>View Requests</Button>
-                  </a>
+                  <Button primary>View Requests</Button>
                 </Link>
               </Grid.Column>
             </Grid.Row>

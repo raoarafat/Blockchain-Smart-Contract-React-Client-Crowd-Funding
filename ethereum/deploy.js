@@ -26,8 +26,8 @@ const deploy = async () => {
         data: bytecode, // Use correct bytecode here
       })
       .send({
-        gas: '5000000',
-        gasPrice: await web3.eth.getGasPrice(),
+        gas: '5000000', // Keep gas limit reasonable
+        gasPrice: web3.utils.toWei('2', 'gwei'), // Reduce gas price
         from: accounts[0],
       });
 
