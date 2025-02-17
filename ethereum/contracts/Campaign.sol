@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.0; // Update to 0.8.x version
 
 contract CampaignFactory {

@@ -1,11 +1,12 @@
 {
-  "name": "kickstart",
+  "name": "crowdfunding",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build": "next build"
   },
   "author": "",
   "license": "ISC",

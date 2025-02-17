@@ -25,6 +25,10 @@ class RequestIndex extends Component {
   }
 
   renderRows() {
+    if (!this.props.requests || this.props.requests.length === 0) {
+      return null; // Or you could return a placeholder or message if no requests are found
+    }
+
     return this.props.requests.map((request, index) => {
       return (
         <RequestRow
@@ -44,13 +48,15 @@ class RequestIndex extends Component {
     return (
       <Layout>
         <h3>Requests</h3>
-        <Link route={`/campaigns/${this.props.address}/requests/new`}>
-          <a>
-            <Button primary floated="right" style={{ marginBottom: 10 }}>
-              Add Request
-            </Button>
-          </a>
-        </Link>
+        {this.props.address && (
+          <Link route={`/campaigns/${this.props.address}/requests/new`}>
+            <a>
+              <Button primary floated="right" style={{ marginBottom: 10 }}>
+                Add Request
+              </Button>
+            </a>
+          </Link>
+        )}
         <Table>
           <Header>
             <Row>

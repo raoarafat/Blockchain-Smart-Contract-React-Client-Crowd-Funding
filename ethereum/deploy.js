@@ -25,7 +25,11 @@ const deploy = async () => {
       .deploy({
         data: bytecode, // Use correct bytecode here
       })
-      .send({ gas: '1000000', from: accounts[0] });
+      .send({
+        gas: '5000000',
+        gasPrice: await web3.eth.getGasPrice(),
+        from: accounts[0],
+      });
 
     console.log('Contract deployed to:', result.options.address);
   } catch (error) {
