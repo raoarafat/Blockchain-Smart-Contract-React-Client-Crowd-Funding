@@ -18,10 +18,10 @@ class CampaignShow extends Component {
 
     return {
       address: props.query.address,
-      minimumContribution: summary[0],
-      balance: summary[1],
-      requestsCount: summary[2],
-      approversCount: summary[3],
+      minimumContribution: summary[0].toString(),
+      balance: summary[1].toString(),
+      requestsCount: summary[2].toString(),
+      approversCount: summary[3].toString(),
       manager: summary[4],
     };
   }
