@@ -29,9 +29,10 @@ class RequestRow extends Component {
         disabled={request.complete}
         positive={readyToFinalize && !request.complete}
       >
-        <Cell>{this.props.id}</Cell>
+        <Cell>{id}</Cell>
         <Cell>{this.props.request.description}</Cell>
-        <Cell>{web3.utils.fromWei(this.props.request.value)}</Cell>
+        {/* <Cell>{web3.utils.fromWei(this.props.request.value)}</Cell> */}
+        <Cell>{Number(this.props.request.value)}</Cell>
         <Cell>{this.props.request.recipient}</Cell>
         <Cell>
           {this.props.request.approvalCount}/{approversCount}

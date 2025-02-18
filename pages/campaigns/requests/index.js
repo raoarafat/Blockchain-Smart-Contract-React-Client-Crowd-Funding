@@ -6,12 +6,15 @@ import { Button, Table } from 'semantic-ui-react';
 import RequestRow from '../../../components/RequestRow';
 
 class RequestIndex extends Component {
-  async getInitialProps() {
-    console.log('getInitialProps');
-    const { address } = this.props.query;
+  static async getInitialProps(props) {
+    const address = props.query.address;
     const campaign = Campaign(address);
-    const requestCount = await campaign.methods.getRequestCount().call();
-    const approversCount = await campaign.methods.approversCount().call();
+    const requestCount = Number(
+      await campaign.methods.getRequestsCount().call()
+    );
+    const approversCount = Number(
+      await campaign.methods.approversCount().call()
+    );
 
     const requests = await Promise.all(
       Array(requestCount)
@@ -48,8 +51,8 @@ class RequestIndex extends Component {
     return (
       <Layout>
         <h3>Requests</h3>
-        {this.props.address && (
-          <Link route={`/campaigns/${this.props.address}/requests/new`}>
+        {this.props && this.props.address && (
+          <Link href={`/campaigns/${this.props.address}/requests/new`}>
             <Button primary floated="right" style={{ marginBottom: 10 }}>
               Add Request
             </Button>
