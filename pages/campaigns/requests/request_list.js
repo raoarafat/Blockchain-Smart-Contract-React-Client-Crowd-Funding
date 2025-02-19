@@ -5,7 +5,7 @@ import Campaign from '../../../ethereum/campaign';
 import { Button, Table } from 'semantic-ui-react';
 import RequestRow from '../../../components/RequestRow';
 
-class RequestIndex extends Component {
+class RequestLists extends Component {
   static async getInitialProps(props) {
     const address = props.query.address;
     const campaign = Campaign(address);
@@ -78,4 +78,4 @@ class RequestIndex extends Component {
   }
 }
 
-export default RequestIndex;
+export default RequestLists;

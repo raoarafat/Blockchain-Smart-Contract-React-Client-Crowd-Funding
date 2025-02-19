@@ -16,7 +16,9 @@ class CampaignIndex extends Component {
     const items = this.props.campaigns.map((address) => {
       return {
         header: address,
-        description: <Link route={`/campaigns/${address}`}>View Campaign</Link>,
+        description: (
+          <Link route={`/campaigns/detail/${address}`}>View Campaign</Link>
+        ),
         fluid: true,
       };
     });
@@ -34,7 +36,7 @@ class CampaignIndex extends Component {
           ></link> */}
           <h3>Open Campaigns</h3>
           {this.renderCampaigns()}
-          <Link route="/campaigns/new" legacyBehavior={true}>
+          <Link route="/campaigns/new">
             <Button
               floated="right"
               content="Create Campaign"
