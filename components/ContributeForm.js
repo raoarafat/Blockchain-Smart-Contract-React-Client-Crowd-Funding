@@ -25,7 +25,7 @@ class ContributeForm extends Component {
         from: accounts[0],
         value: web3.utils.toWei(this.state.contribution, 'ether'),
       });
-      Router.replaceRoute(`/campaigns/${this.props.address}`);
+      Router.replaceRoute(`/campaigns/detail/${this.props.address}`);
     } catch (err) {
       this.setState({ errorMessage: err.message });
       console.log(err);

@@ -17,12 +17,13 @@ class CampaignShow extends Component {
     console.log('summary show: ', summary);
 
     return {
+      campaignName: summary[0].toString(),
       address: props.query.address,
-      minimumContribution: summary[0].toString(),
-      balance: summary[1].toString(),
-      requestsCount: summary[2].toString(),
-      approversCount: summary[3].toString(),
-      manager: summary[4],
+      minimumContribution: summary[1].toString(),
+      balance: summary[2].toString(),
+      requestsCount: summary[3].toString(),
+      approversCount: summary[4].toString(),
+      manager: summary[5],
     };
   }
 
@@ -75,7 +76,7 @@ class CampaignShow extends Component {
   render() {
     return (
       <Layout>
-        <h3>Campaign Show</h3>
+        <h3>{this.props.campaignName}</h3>
         <Grid>
           <Grid.Row>
             <Grid.Column width={10}>{this.renderCards()}</Grid.Column>

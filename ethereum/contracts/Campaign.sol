@@ -3,18 +3,26 @@
 pragma solidity ^0.8.0; // Update to 0.8.x version
 
 contract CampaignFactory {
-    address[] public deployedCampaigns;
-
-    function createCampaign(uint minimum) public {
-        address newCampaign = address(new Campaign(minimum, msg.sender));
-        deployedCampaigns.push(newCampaign);
+    struct CampaignInfo {
+        address campaignAddress;
+        string name;
     }
 
-    function getDeployedCampaigns() public view returns (address[] memory) {
+    CampaignInfo[] public deployedCampaigns;
+
+    function createCampaign(string memory name, uint minimum) public {
+        address newCampaign = address(new Campaign(name, minimum, msg.sender));
+        deployedCampaigns.push(CampaignInfo(newCampaign, name));
+    }
+
+    function getDeployedCampaigns()
+        public
+        view
+        returns (CampaignInfo[] memory)
+    {
         return deployedCampaigns;
     }
 }
-
 contract Campaign {
     struct Request {
         string description;
@@ -28,6 +36,7 @@ contract Campaign {
     Request[] public requests;
     address public manager;
     uint public minimumContribution;
+    string public campaignName;
     mapping(address => bool) public approvers;
     uint public approversCount;
 
@@ -37,8 +46,9 @@ contract Campaign {
     }
 
     // Use the constructor keyword for newer Solidity versions
-    constructor(uint minimum, address creator) {
+    constructor(string memory name, uint minimum, address creator) {
         manager = creator;
+        campaignName = name;
         minimumContribution = minimum;
     }
 
@@ -100,9 +110,10 @@ contract Campaign {
     function getSummary()
         public
         view
-        returns (uint, uint, uint, uint, address)
+        returns (string memory, uint, uint, uint, uint, address)
     {
         return (
+            campaignName,
             minimumContribution,
             address(this).balance,
             requests.length,

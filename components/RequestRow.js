@@ -66,14 +66,6 @@ class RequestRow extends Component {
     const readyToFinalize = request.approvalCount > approversCount / 2;
     const approvalCount = Number(request.approvalCount);
 
-    console.log('approvalCount', approvalCount);
-    console.log('approversCount', approversCount);
-    console.log('readyToFinalize', readyToFinalize);
-    console.log('request.complete', request.complete);
-    console.log('this.props.id', this.props.id);
-    // console.log('request.value', request.value);
-    console.log('request.value', web3.utils.fromWei(request.value, 'ether'));
-
     return (
       <Row
         disabled={request.complete}

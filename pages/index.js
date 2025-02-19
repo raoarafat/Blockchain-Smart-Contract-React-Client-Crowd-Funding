@@ -13,11 +13,13 @@ class CampaignIndex extends Component {
   }
 
   renderCampaigns() {
-    const items = this.props.campaigns.map((address) => {
+    const items = this.props.campaigns.map((campaign) => {
       return {
-        header: address,
+        header: campaign.name,
         description: (
-          <Link route={`/campaigns/detail/${address}`}>View Campaign</Link>
+          <Link route={`/campaigns/detail/${campaign.campaignAddress}`}>
+            View Campaign
+          </Link>
         ),
         fluid: true,
       };
