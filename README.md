@@ -67,7 +67,7 @@ Ensure you have the following installed:
 ## Project Structure
 
 ```plaintext
-kickstart/
+crowdfunding/
 ├── ethereum/
 │   ├── Campaign.sol      # Solidity contract for campaigns
 │   ├── compile.js        # Script to compile contracts
